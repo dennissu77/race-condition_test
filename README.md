@@ -29,10 +29,18 @@ g++ -o producer_consumer_test producer_consumer_test.cpp -pthread -O2
 ```
 
 
-# fix
+# fix  block版本
 ```
 g++ -std=c++11 -pthread -o producer_consumer_fix producer_consumer_fix.cpp
 ```
 ```
 ./producer_consumer_fix
+```
+
+# fix  nonblock版本
+```
+g++ -o producer_consumer_nonblock producer_consumer_nonblock.cpp -pthread -O2
+```
+```
+./producer_consumer_nonblock
 ```
