@@ -75,6 +75,7 @@ void consumer() {
         }
     }
 }
+```
 # queue版本
 ### queue版本  多個生產者多個消費者
 ```
