@@ -44,3 +44,20 @@ g++ -o producer_consumer_nonblock producer_consumer_nonblock.cpp -pthread -O2
 ```
 ./producer_consumer_nonblock
 ```
+
+# ======================queue版本
+```
+g++ -o queue_test queue_test.cpp -lpthread
+```
+```
+./queue_test
+```
+
+
+# ======================queue版本 一個生產者一個消費者
+```
+g++ -std=c++11 -O2 -pthread -o queue_test_one queue_test_one.cpp
+```
+```
+./queue_test_one
+```
