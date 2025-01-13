@@ -27,6 +27,14 @@ g++ -o producer_consumer_test producer_consumer_test.cpp -pthread -O2
 ```
 ./producer_consumer_test
 ```
+<!-- 
+## 令一版本比較好比較的錯誤程式
+```
+g++ -o race_condition_test_updated race_condition_test_updated.cpp -pthread -O2
+```
+```
+./race_condition_test_updated
+``` -->
 
 
 # fix  block版本
@@ -43,4 +51,27 @@ g++ -o producer_consumer_nonblock producer_consumer_nonblock.cpp -pthread -O2
 ```
 ```
 ./producer_consumer_nonblock
+```
+
+---
+
+
+也可以調整成自適應延遲，來針對使用場景
+```
+void consumer() {
+    int consumed = 0;
+    int delay = 1;  // 初始延遲
+
+    while (consumed < NUM_OPERATIONS) {
+        std::lock_guard<std::mutex> lock(mtx);
+        if (!vec.empty()) {
+            vec.pop_back();
+            consumed++;
+            delay = 1;  // 成功消費後重置延遲
+        } else {
+            std::this_thread::sleep_for(std::chrono::nanoseconds(delay));
+            delay = std::min(delay * 2, 1000);  // 自適應延遲上限 1000ns
+        }
+    }
+}
 ```
