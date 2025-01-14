@@ -93,3 +93,12 @@ g++ -std=c++11 -O2 -pthread -o queue_test_one queue_test_one.cpp
 ```
 ./queue_test_one
 ```
+
+### fix的  queue版本 一個生產者一個消費者 
+```
+g++ -std=c++11 -pthread -o queue_test_one_fix queue_test_one_fix.cpp
+
+```
+```
+./queue_test_one_fix
+```
